@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Day 6 of advent of code.
 
-Tuning trouble. Part 1
+Tuning trouble. Parts 1 & 2
 """
 import argparse
 import sys

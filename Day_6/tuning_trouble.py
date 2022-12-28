@@ -27,7 +27,9 @@ def main():
     for line in args.input:
         line = line.strip()
         markerstart = find_start_of_packet(line)
+        msgstart = find_start_of_packet(line, 14)
         print(f'marker starts at {markerstart} for "{line}"')
+        print(f'message starts at {msgstart}')
     return 0
 
 

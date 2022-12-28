@@ -42,11 +42,14 @@ def compute_triples(inputfh):
     """Compute the rock paper scissors triplet of elfpacks scoring for part 2."""
     sacks = []
     for contents in inputfh:
-        contents = contents.strip()
-        count = len(contents)
-        sacks.append(count)
-
-    return (sacks)
+        sacks.append(contents.strip())
+    scores = []
+    for i in range(0, len(sacks), 3):
+        for badge in set(sacks[i+0]) & set(sacks[i+1]) & set(sacks[i+2]):
+            s = compute_priority(badge)
+            #  print(f'score: {s} for badge {badge}')
+            scores.append(s)
+    return (sum(scores))
 
 
 def main():
@@ -58,8 +61,9 @@ def main():
 
     (sacks, total_score) = compute(args.input)
     print(f'sacks:\n{sacks}\nscore is {total_score}')
-    #  args.input.seek(0)
-
+    args.input.seek(0)
+    (badge_score) = compute_triples(args.input)
+    print(f'badge score is {badge_score}')
     return 0
 
 
